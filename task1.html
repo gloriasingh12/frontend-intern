@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz App | Task 1</title>
+    <style>
+        /* CSS for a polished look */
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #eef2f3; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        #quiz-card { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); width: 100%; max-width: 450px; text-align: center; }
+        h2 { color: #333; margin-bottom: 20px; }
+        .option-btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #007bff; border-radius: 8px; background: white; color: #007bff; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .option-btn:hover { background: #007bff; color: white; }
+        #feedback { margin-top: 15px; font-weight: bold; min-height: 24px; }
+        #score-screen { color: #28a745; font-size: 1.5rem; margin-top: 20px; }
+        .btn-next { background-color: #28a745; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; margin-top: 15px; font-size: 1rem; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div id="quiz-card">
+    <div id="quiz-ui">
+        <h2 id="question">Question loading...</h2>
+        <div id="options-container"></div>
+        <div id="feedback"></div>
+        <button id="next-btn" class="btn-next hidden">Next Question ➡️</button>
+    </div>
+    
+    <div id="score-screen" class="hidden">
+        <h2>Quiz Finished! 🏆</h2>
+        <p id="final-score"></p>
+        <button onclick="location.reload()" class="btn-next">Restart Quiz</button>
+    </div>
+</div>
+
+<script>
+    // Quiz Data: Questions, Options, and Correct Answer
+    const quizData = [
+        { q: "What is the full form of SEO?", a: "Search Engine Optimization", options: ["Social Engine Org", "Search Engine Optimization", "Site Error Only"] },
+        { q: "Which tool is used for Static Code Analysis?", a: "SonarQube", options: ["Jira", "SonarQube", "OWASP ZAP"] },
+        { q: "Which programming language is best for Data Science?", a: "Python", options: ["C++", "HTML", "Python"] }
+    ];
+
+    let currentStep = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options-container');
+    const feedbackEl = document.getElementById('feedback');
+    const nextBtn = document.getElementById('next-btn');
+
+    function initQuiz() {
+        const currentData = quizData[currentStep];
+        questionEl.innerText = current
